@@ -1,7 +1,7 @@
-import Home from "../pages/HomePage/HomePage";
-import Cart from "../pages/CartPage/CartPage";
-import CategoryProduct from "../pages/CategoryProductPage/CategoryProductPage";
-import ProductSingle from "./ProductSinglePage/ProductSinglePage";
-import Search from "./SearchPage/SearchPage";
+import React from "react";
 
-export { Home, CategoryProduct, ProductSingle, Cart, Search };
+const SearchPage = () => {
+  return <div>SearchPage</div>;
+};
+
+export default SearchPage;

@@ -10,7 +10,18 @@ const Footer = () => {
           <Link to="/" className="text-uppercase">
             privacy policy
           </Link>
+          <div className="vert-line"></div>
+          <Link to="/" className="text-uppercase">
+            term of service
+          </Link>
+          <div className="vert-line"></div>
+          <Link to="/" className="text-uppercase">
+            About InnoCart
+          </Link>
         </div>
+        <span className="text-white copyright-text text-manrope fs-14 fw-3">
+          &copy; 2024 InnoCart All Rights Reserved.
+        </span>
       </div>
     </footer>
   );

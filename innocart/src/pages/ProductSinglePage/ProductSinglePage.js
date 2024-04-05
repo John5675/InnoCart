@@ -10,6 +10,13 @@ import {
 import { STATUS } from "../../utils/status";
 import Loader from "../../components/Loader/Loader";
 import { formatPrice } from "../../utils/helpers";
+import {
+  addToCart,
+  getCartMessageStatus,
+  setCartMessageOff,
+  setCartMessageOn,
+} from "../../store/cartSlice";
+import CartMessage from "../../components/CartMessage/CartMessage";
 
 const ProductSinglePage = () => {
   const { id } = useParams();
@@ -17,10 +24,17 @@ const ProductSinglePage = () => {
   const product = useSelector(getProductSingle);
   const productSingleStatus = useSelector(getSingleProductStatus);
   const [quantity, setQuantity] = useState(1);
+  const cartMessageStatus = useSelector(getCartMessageStatus);
 
   useEffect(() => {
     dispatch(fetchAsyncProductSingle(id));
-  }, []);
+
+    if (cartMessageStatus) {
+      setTimeout(() => {
+        dispatch(setCartMessageOff());
+      }, 2000);
+    }
+  }, [cartMessageStatus]);
 
   let discountedPrice =
     product?.price - product?.price * (product?.discountPercentage / 100);
@@ -42,6 +56,16 @@ const ProductSinglePage = () => {
       if (tempQty < 1) tempQty = 1;
       return tempQty;
     });
+  };
+
+  const addToCartHandler = (product) => {
+    let discountedPrice =
+      product?.price - product?.price * (product?.discountPercentage / 100);
+    let totalPrice = quantity * discountedPrice;
+    dispatch(
+      addToCart({ ...product, quantity: quantity, totalPrice, discountedPrice })
+    );
+    dispatch(setCartMessageOn(true));
   };
 
   return (
@@ -181,7 +205,14 @@ const ProductSinglePage = () => {
                 <div className="btns">
                   <button type="button" className="add-to-cart-btn btn">
                     <i className="fas fa-shopping-cart">
-                      <span className="btn-text mx-2">add to cart</span>
+                      <span
+                        className="btn-text mx-2"
+                        onClick={() => {
+                          addToCartHandler(product);
+                        }}
+                      >
+                        add to cart
+                      </span>
                     </i>
                   </button>
                   <button type="button" className="buy-now btn mx-3">
@@ -193,6 +224,8 @@ const ProductSinglePage = () => {
           </div>
         </div>
       </div>
+
+      {cartMessageStatus && <CartMessage />}
     </main>
   );
 };

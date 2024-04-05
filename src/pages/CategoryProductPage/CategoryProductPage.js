@@ -4,7 +4,6 @@ import ProductList from "../../components/ProductList/ProductList";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
-  fetchAsyncCategories,
   fetchAsyncProductsOfCategory,
   getAllProductsByCategory,
   getCategoryProductsStatus,

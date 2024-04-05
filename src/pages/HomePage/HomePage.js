@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./HomePage.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCategories } from "../../store/categorySlice";
 import ProductList from "../../components/ProductList/ProductList";
 import {
   fetchAsyncProducts,
@@ -13,11 +12,10 @@ import { STATUS } from "../../utils/status";
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const categories = useSelector(getAllCategories);
 
   useEffect(() => {
     dispatch(fetchAsyncProducts(50));
-  }, []);
+  }, [dispatch]);
 
   const products = useSelector(getAllProducts);
   const productStatus = useSelector(getAllProductsStatus);

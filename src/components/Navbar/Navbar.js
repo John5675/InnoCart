@@ -25,7 +25,7 @@ const Navbar = () => {
 
   useEffect(() => {
     dispatch(getCartTotal());
-  }, [carts]);
+  }, [dispatch, carts]);
 
   return (
     <nav className="navbar">

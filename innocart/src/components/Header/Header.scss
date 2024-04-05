@@ -1,12 +1,8 @@
 @import "../../App.scss";
 
 .header {
-  background: rgba(24, 56, 151, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(24, 56, 151, 255) 0%,
-    rgba(21, 50, 136, 255) 100%
-  );
+  background: rgb(118, 171, 174);
+  background: linear-gradient(180deg, rgb(49, 54, 63) 0%, rgb(49, 54, 63) 100%);
 
   .header-cnt-top {
     border-bottom: 1px solid lighten($clr-orange, 10%);

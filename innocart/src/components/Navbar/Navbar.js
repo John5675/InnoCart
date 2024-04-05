@@ -40,7 +40,7 @@ const Navbar = () => {
           </button>
           <Link to="/" className="navbar-brand flex align-center">
             <span className="navbar-brand-ico">
-              <i className="fa-solid fa-bag-shopping"></i>
+              <i className="fa-solid fa-cart-arrow-down"></i>
             </span>
             <span className="navbar-brand-txt mx-2">
               <span className="fw-7">Inno</span>Cart
